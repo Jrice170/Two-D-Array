@@ -1,6 +1,8 @@
 
 
 
+
+
 #include <iostream>
 #include <cstdlib>
 using namespace std;
@@ -47,6 +49,7 @@ class TwoD
     TwoD & operator -(const TwoD & rhs);
     TwoD & operator +(const TwoD & rhs);
     TwoD & operator =(const TwoD & rhs);
+    ~TwoD(); ///destructor
     
 };
 
@@ -83,6 +86,12 @@ int main()
    
    cout<<" More muliply examples "<<endl;
    
+   muliply.~TwoD();
+   add.~TwoD();
+   subtract.~TwoD();
+   Matrix2.~TwoD();
+   Matrix.~TwoD();   
+   
    TwoD Unit(3,4), mulipler(4,3);
    mulipler.fill_ones();
    double entry;
@@ -98,6 +107,11 @@ int main()
    
    Total.Display();
    
+   cout<<" Free up "<<endl;
+   
+   Total.Display();
+   Unit.~TwoD();
+   mulipler.~TwoD();
    
 }
 
@@ -502,10 +516,18 @@ double TwoD::Getindex(int row,int col)
     
 }
 
+TwoD::~TwoD()
+{
+    
+    for(int i = 0;i<maxRows;i++)
+    {
+        
+        delete [] pointer[i];
+        
+        
+    }
+   
 
-
-
-
-
+}
 
 
