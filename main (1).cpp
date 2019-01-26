@@ -526,7 +526,9 @@ TwoD::~TwoD()
         
         
     }
-   
+    
+    delete [] pointer;
+    
 
 }
 
